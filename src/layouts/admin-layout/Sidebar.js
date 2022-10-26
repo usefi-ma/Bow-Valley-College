@@ -29,22 +29,22 @@ const Sidebar = () => {
           </div>
 
           <li className="nav-item">
-            <NavLink className="nav-link" to="/AddCourse">
+            <NavLink className="nav-link" to="Admin/AddCourse">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Add Course</span></NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/Courses">
+            <NavLink className="nav-link" to="Admin/Courses">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Courses</span></NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/Students">
+            <NavLink className="nav-link" to="Admin/Students">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Students</span></NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/SubmitedForms">
+            <NavLink className="nav-link" to="Admin/SubmitedForms">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Submitted Forms</span></NavLink>
           </li>

@@ -36,10 +36,10 @@ const AdminLayout = () => {
 
             <Routes>
                 <Route path="/" element={<Dashboard />}  />
-                <Route path="/AddCourse" element={<AddCourse />} exact/>
-                <Route path="/Courses" element={<Courses />} exact />
-                <Route path="/Students" element={<Students />} exact />
-                <Route path="/SubmitedForms" element={<SubmitedForms />} exact />
+                <Route path="Admin/AddCourse" element={<AddCourse />} exact/>
+                <Route path="Admin/Courses" element={<Courses />} exact />
+                <Route path="Admin/Students" element={<Students />} exact />
+                <Route path="Admin/SubmitedForms" element={<SubmitedForms />} exact />
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
 

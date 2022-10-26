@@ -1,15 +1,18 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import '../../assest/admin/css/sb-admin-2.css'
 import { Link } from 'react-router-dom';
+import AdminLayout from '../../layouts/admin-layout/AdminLayout';
 const AdminLogin = () => {
-    const [enter,setEnter]=useState(false);
-    React.useEffect(() => {
-        async function init() {
-           setEnter(false);
-        }
-        init();
-    }, [])
-  
+    const [role, setRole] = useState("Admin");
+
+
+    // React.useEffect(() => {
+    //     async function init() {
+    //         setRole(false);
+    //     }
+    //     init();
+    // }, [])
+
     return (
         <>
             <div className="container pt-5">
@@ -46,16 +49,10 @@ const AdminLogin = () => {
                                                             Me</label>
                                                     </div>
                                                 </div>
-                                               
-                                                <Link to="/" type="submit" className="btn btn-primary btn-user btn-block"
-                                                >Login</Link>
-
+                                                <Link to="/Admin" type="submit" className="btn btn-primary btn-user btn-block"
+                                                    >Login</Link>
                                             </form>
-                                            {/* <hr />
-                            
-                            <div className="text-center">
-                                <Link className="small" to="/Signup">Create an Account!</Link>
-                            </div> */}
+
                                         </div>
                                     </div>
                                 </div>

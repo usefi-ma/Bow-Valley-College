@@ -1,7 +1,65 @@
-import React from 'react'
+import React, { useState } from 'react'
 import headerImg from '../assest/img/m-img.jpg';
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+
 const ProgramDetail = () => {
+
+
+	const currentProgram = [
+		{
+			code: 1,
+			name: "Information Technology Systems Diploma",
+			image: "/p1.jpg",
+			dateStarting: "SEPTEMBER 05, 2023",
+			dateEnding: "May 05, 2025",
+			fee: "CAD $42,407",
+			description: "Our Information Technology Systems (ITS) Diploma will give you the hardware and software skills required for the generation, storage, retrieval, transmission, and protection of digital information",
+			type: "Diploma",
+			duration: "2 Years",
+			outlines: [{ term: 1, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
+			{ term: 2, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
+			{ term: 3, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
+			{ term: 4, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] }]
+		},
+		{
+			code: 2,
+			name: "Software Development Post-Diploma Certificate",
+			image: "/p2.jpg",
+			dateStarting: "SEPTEMBER 05, 2023",
+			dateEnding: "May 05, 2024",
+			fee: "CAD $20,458",
+			description: "Prepare for a career in computer programming, web application development, software testing, and quality control.",
+			type: "Certificate",
+			duration: "2 Terms",
+			outlines: [{ term: 1, courses: [{ code: "SODV1101", name: "Programming Fundamentals" }, { code: "TECH1101", name: "Web and Internet Fundamentals" }, { code: "TECH1102", name: "Internet of Things" }, { code: "MATH1901", name: "Math for the Computer Industry" }] },
+			{ term: 2, courses: [{ code: "DATA1201", name: "Introduction to Relational Databases" }, { code: "DESN2301 ", name: "User Experience Design" }, { code: "SODV1201 ", name: "Introduction to Web Programming" }, { code: "TECH1201 ", name: "Networking Essentials" }] }]
+		},
+		{
+			code: 3,
+			name: "Software Development Diploma",
+			image: "/p3.jpg",
+			dateStarting: "SEPTEMBER 05, 2023",
+			dateEnding: "May 05, 2025",
+			fee: "CAD $42,407",
+			description: "Gain the skills you need to create the latest computer, mobile, and gaming applications. Prepare to transform your ideas into reality all while developing your problem-solving skills.",
+			type: "Diploma",
+			duration: "2 Years",
+			outlines: [{ term: 1, courses: [{ code: "SODV1101", name: "Programming Fundamentals" }, { code: "TECH1101", name: "Web and Internet Fundamentals" }, { code: "TECH1102", name: "Internet of Things" }, { code: "MATH1901", name: "Math for the Computer Industry" }] },
+			{ term: 2, courses: [{ code: "DATA1201", name: "Introduction to Relational Databases" }, { code: "DESN2301 ", name: "User Experience Design" }, { code: "SODV1201 ", name: "Introduction to Web Programming" }, { code: "TECH1201 ", name: "Networking Essentials" }] },
+			{ term: 3, courses: [{ code: "DATA2201 ", name: "Relational Databases" }, { code: "SODV2101 ", name: "Rapid Application Development" }, { code: "SODV2201 ", name: "Web Programming" }, { code: "SODV2202 ", name: "Object Oriented Programming" }] },
+			{ term: 4, courses: [{ code: "SODV2203 ", name: "Introduction to Game and Simulation Programming" }, { code: "SODV2401 ", name: "Algorithms and Data Structures" }] }]
+		}]
+
+	const [searchParams, setSearchParams] = useSearchParams();
+
+		var object='';
+	currentProgram.forEach(function (item) {
+		if (item.code == searchParams.get("code")) {
+			object=item;
+		}
+	
+	});
+
 	return (
 		<>
 			{/* <!-- start banner Area --> */}
@@ -41,9 +99,9 @@ const ProgramDetail = () => {
 											<div className="col-xs-12">
 												<div className="header-variant header-variant-wrapper-1">
 													<h1 className="header-variant-2">
-														Course Listing
+														Course Listing:
 													</h1>
-													
+
 												</div>
 												<h3 className="header-variant-3">Term 1</h3>
 												<div className="accordion">
@@ -84,7 +142,7 @@ const ProgramDetail = () => {
 																			</a>
 																		</h5>
 																	</div>
-																	<div id="TECH1101-0-0-1" className="panel-collapse collapse" aria-labelledby="collapseItem-0-0-1" aria-expanded="false" style={{height: 0}}>
+																	<div id="TECH1101-0-0-1" className="panel-collapse collapse" aria-labelledby="collapseItem-0-0-1" aria-expanded="false" style={{ height: 0 }}>
 																		<div className="panel-body">
 
 																			<p>This course focuses on the design, construction and website publishing that meet web standards for the internet. During the design of websites, learners address issues such as bandwidth, aesthetics and the user interface. During the construction of websites, learners focus on the use of Hyper Text Markup Language (HTML), cascading style sheets (CSS), basic client-side scripting, website maintenance and web technologies.</p>
