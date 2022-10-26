@@ -1,8 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Programinfo = ({ programInfo }) => {
-  
+    const navigate = useNavigate();
+
+    const goProgramDetail = (num) => {
+
+        // to="/ProgramDetail/?code=1}"
+        navigate({
+            pathname: '/ProgramDetail',
+            search: `?code=${(num)}`,
+        });
+
+    }
     return (
         <>
             <div className="single-popular-carusel col-lg-3 col-md-6" key={programInfo.code}>
@@ -17,10 +27,10 @@ const Programinfo = ({ programInfo }) => {
                     </div>
                 </div>
                 <div className="details">
-                    <Link to="/ProgramDetail/?code=1">
+                    <p onClick={() => goProgramDetail(programInfo.code)}>
                         <h4>{programInfo.name}
                         </h4>
-                    </Link>
+                    </p>
                     <p>
                         {programInfo.description}
                     </p>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
-import BrowserRouter from 'react-router-dom';
 
 export const Nav = () => {
   return (
@@ -13,7 +12,7 @@ export const Nav = () => {
           <li><NavLink to="/Contact" >Contact</NavLink></li>
           <li><NavLink to="/Signup" >Signup</NavLink></li>
           <li><NavLink to="/Login">Login</NavLink></li>
-          <li><NavLink to="/AdminLogin">Admin Login</NavLink></li>
+          {/* <li><NavLink to="/AdminLogin">Admin Login</NavLink></li> */}
         </ul>
       </nav>
     </div>

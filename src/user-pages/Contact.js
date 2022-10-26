@@ -1,11 +1,11 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Contact = () => {
     return (
         <>
-        
-         <section className="banner-area relative about-banner" id="home">
+
+            <section className="banner-area relative about-banner" id="home">
                 <div className="overlay overlay-bg"></div>
                 <div className="container">
                     <div className="row d-flex align-items-center justify-content-center">
@@ -14,15 +14,15 @@ const Contact = () => {
                                 Contact Us
                             </h1>
                             <p className="text-white link-nav">
-                                <Link to="/">Home </Link> 
-                             <span className="lnr lnr-arrow-right"></span> 
-                              <Link to="/Contact"> Contact Us</Link>
-                              </p>
+                                <Link to="/">Home </Link>
+                                <span className="lnr lnr-arrow-right"></span>
+                                <Link to="/Contact"> Contact Us</Link>
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
-         
+
             <section className="contact-page-area section-gap">
                 <div className="container">
                     <div className="row">
@@ -83,11 +83,10 @@ const Contact = () => {
                             </form>
                         </div>
 
-
                     </div>
                 </div>
             </section>
-        
+
         </>
     )
 }

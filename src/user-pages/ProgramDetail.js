@@ -1,9 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import headerImg from '../assest/img/m-img.jpg';
 import { Link, useSearchParams } from 'react-router-dom'
 
 const ProgramDetail = () => {
 
+	let prgramItem = '';
+	const outlines =
+		[{
+			term: 1,
+			programCode: 1,
+			courses: [{ code: "Pr111", name: "Project management1" },
+			{ code: "C++111", name: "C++ Programming Fundamentals" },
+			{ code: "CompM1111", name: "Computer Maintenance" },
+			{ code: "IS1111", name: "Information Security1" }],
+		},
+		{ term: 2, programCode: 1, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
+		{ term: 3, programCode: 1, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
+		{ term: 4, programCode: 1, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] }
+	]
 
 	const currentProgram = [
 		{
@@ -16,10 +30,11 @@ const ProgramDetail = () => {
 			description: "Our Information Technology Systems (ITS) Diploma will give you the hardware and software skills required for the generation, storage, retrieval, transmission, and protection of digital information",
 			type: "Diploma",
 			duration: "2 Years",
-			outlines: [{ term: 1, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
-			{ term: 2, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
-			{ term: 3, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
-			{ term: 4, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] }]
+			outLineCode:1,
+			// outlines: [{ term: 1, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
+			// { term: 2, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
+			// { term: 3, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] },
+			// { term: 4, courses: [{ code: "Pr111", name: "Project management1" }, { code: "C++111", name: "C++ Programming Fundamentals" }, { code: "CompM1111", name: "Computer Maintenance" }, { code: "IS1111", name: "Information Security1" }] }]
 		},
 		{
 			code: 2,
@@ -31,8 +46,8 @@ const ProgramDetail = () => {
 			description: "Prepare for a career in computer programming, web application development, software testing, and quality control.",
 			type: "Certificate",
 			duration: "2 Terms",
-			outlines: [{ term: 1, courses: [{ code: "SODV1101", name: "Programming Fundamentals" }, { code: "TECH1101", name: "Web and Internet Fundamentals" }, { code: "TECH1102", name: "Internet of Things" }, { code: "MATH1901", name: "Math for the Computer Industry" }] },
-			{ term: 2, courses: [{ code: "DATA1201", name: "Introduction to Relational Databases" }, { code: "DESN2301 ", name: "User Experience Design" }, { code: "SODV1201 ", name: "Introduction to Web Programming" }, { code: "TECH1201 ", name: "Networking Essentials" }] }]
+			// outlines: [{ term: 1, courses: [{ code: "SODV1101", name: "Programming Fundamentals" }, { code: "TECH1101", name: "Web and Internet Fundamentals" }, { code: "TECH1102", name: "Internet of Things" }, { code: "MATH1901", name: "Math for the Computer Industry" }] },
+			// { term: 2, courses: [{ code: "DATA1201", name: "Introduction to Relational Databases" }, { code: "DESN2301 ", name: "User Experience Design" }, { code: "SODV1201 ", name: "Introduction to Web Programming" }, { code: "TECH1201 ", name: "Networking Essentials" }] }]
 		},
 		{
 			code: 3,
@@ -44,24 +59,32 @@ const ProgramDetail = () => {
 			description: "Gain the skills you need to create the latest computer, mobile, and gaming applications. Prepare to transform your ideas into reality all while developing your problem-solving skills.",
 			type: "Diploma",
 			duration: "2 Years",
-			outlines: [{ term: 1, courses: [{ code: "SODV1101", name: "Programming Fundamentals" }, { code: "TECH1101", name: "Web and Internet Fundamentals" }, { code: "TECH1102", name: "Internet of Things" }, { code: "MATH1901", name: "Math for the Computer Industry" }] },
-			{ term: 2, courses: [{ code: "DATA1201", name: "Introduction to Relational Databases" }, { code: "DESN2301 ", name: "User Experience Design" }, { code: "SODV1201 ", name: "Introduction to Web Programming" }, { code: "TECH1201 ", name: "Networking Essentials" }] },
-			{ term: 3, courses: [{ code: "DATA2201 ", name: "Relational Databases" }, { code: "SODV2101 ", name: "Rapid Application Development" }, { code: "SODV2201 ", name: "Web Programming" }, { code: "SODV2202 ", name: "Object Oriented Programming" }] },
-			{ term: 4, courses: [{ code: "SODV2203 ", name: "Introduction to Game and Simulation Programming" }, { code: "SODV2401 ", name: "Algorithms and Data Structures" }] }]
+			// outlines: [{
+			// 	term: 1,
+			// 	courses: [{ code: "SODV1101", name: "Programming Fundamentals" },
+			// 	{ code: "TECH1101", name: "Web and Internet Fundamentals" },
+			// 	{ code: "TECH1102", name: "Internet of Things" },
+			// 	{ code: "MATH1901", name: "Math for the Computer Industry" }]
+			// }]
 		}]
-
+	// { term: 2, courses: [{ code: "DATA1201", name: "Introduction to Relational Databases" }, { code: "DESN2301 ", name: "User Experience Design" }, { code: "SODV1201 ", name: "Introduction to Web Programming" }, { code: "TECH1201 ", name: "Networking Essentials" }] },
+	// { term: 3, courses: [{ code: "DATA2201 ", name: "Relational Databases" }, { code: "SODV2101 ", name: "Rapid Application Development" }, { code: "SODV2201 ", name: "Web Programming" }, { code: "SODV2202 ", name: "Object Oriented Programming" }] },
+	// { term: 4, courses: [{ code: "SODV2203 ", name: "Introduction to Game and Simulation Programming" }, { code: "SODV2401 ", name: "Algorithms and Data Structures" }] 
 	const [searchParams, setSearchParams] = useSearchParams();
 
-		var object='';
 	currentProgram.forEach(function (item) {
 		if (item.code == searchParams.get("code")) {
-			object=item;
+			prgramItem = item;
 		}
-	
 	});
 
 	return (
 		<>
+
+
+		{/* {alert(outlines[0].courses[0].code)} */}
+		
+		{(prgramItem.code)}
 			{/* <!-- start banner Area --> */}
 			<section className="banner-area relative about-banner" id="home">
 				<div className="overlay overlay-bg"></div>
@@ -69,10 +92,10 @@ const ProgramDetail = () => {
 					<div className="row d-flex align-items-center justify-content-center">
 						<div className="about-content col-lg-12">
 							<h1 className="text-white">
-								Programs and Courses
+								{prgramItem.name}
 							</h1>
 							<p className="text-white link-nav"><Link to="/">Home </Link>
-								<span className="lnr lnr-arrow-right"></span>  <Link to="/Program">  Courses</Link></p>
+								<span className="lnr lnr-arrow-right"></span>  <Link to="/Program">Courses</Link></p>
 						</div>
 					</div>
 				</div>
@@ -89,9 +112,7 @@ const ProgramDetail = () => {
 							</div>
 							<div className="jq-tab-wrapper" id="horizontalTab">
 								<div className="jq-tab-menu">
-									<div className="jq-tab-title active" data-tab="1">Objectives</div>
-									<div className="jq-tab-title" data-tab="2">Eligibility</div>
-									<div className="jq-tab-title" data-tab="3">Course Outline</div>
+									<div className="jq-tab-title active" data-tab="1">Course Outline</div>
 								</div>
 								<div className="jq-tab-content-wrapper">
 									<div className="container">
@@ -99,9 +120,7 @@ const ProgramDetail = () => {
 											<div className="col-xs-12">
 												<div className="header-variant header-variant-wrapper-1">
 													<h1 className="header-variant-2">
-														Course Listing:
 													</h1>
-
 												</div>
 												<h3 className="header-variant-3">Term 1</h3>
 												<div className="accordion">
@@ -117,19 +136,14 @@ const ProgramDetail = () => {
 																	<div className="panel-heading" id="item-details-item-0-0-0">
 																		<h5 className="panel-title">
 																			<a role="button" data-toggle="collapse" data-parent="#accordion-item-0-0" href="#SODV1101-0-0-0" aria-expanded="true" aria-controls="item-details-item-0-0-0" className="">
-																				SODV1101 - <span className="accordion-item-title">Programming Fundamentals</span>
+																				12.02cc- <span className="accordion-item-title">Programming Fundamentals</span>
 																				<span className="credits">Credits&nbsp;<strong>3</strong></span>
 																			</a>
 																		</h5>
 																	</div>
 																	<div id="SODV1101-0-0-0" className="panel-collapse collapse in" aria-labelledby="collapseItem-0-0-0" aria-expanded="true" >
 																		<div className="panel-body">
-
 																			<p>Computer programming is central to software development. Learners analyze basic software and technology problems and develop a good programming style and logical thinking to write structured instruction that addresses those problems. Learners demonstrate their structured coding skills by writing correct code with clarity and quality. They use extensively the structured control flow, repetition, block structure, and subroutines in this course.</p>
-
-
-
-
 																		</div>
 																	</div>
 																</div>
@@ -450,157 +464,6 @@ const ProgramDetail = () => {
 														</div>
 													</div>
 												</div>
-												<h3 className="header-variant-3">Term 4</h3>
-												<div className="accordion">
-													<div className="row accordion-title">
-														<div className="col-xs-12">
-															<h4 className="header-variant-5">Required Courses<span>Credit</span></h4>
-														</div>
-													</div>
-													<div className="row accordion-list">
-														<div className="col-xs-12">
-															<div className="panel-group accordion type-connected" id="accordion-item-3-0">
-																<div className="panel panel-default">
-																	<div className="panel-heading" id="item-details-item-3-0-0">
-																		<h5 className="panel-title">
-																			<a role="button" data-toggle="collapse" data-parent="#accordion-item-3-0" href="#SODV2203-3-0-0" aria-expanded="false" aria-controls="item-details-item-3-0-0">
-																				SODV2203 - <span className="accordion-item-title">Introduction to Game and Simulation Programming</span>
-																				<span className="credits">Credits&nbsp;<strong>3</strong></span>
-																			</a>
-																		</h5>
-																	</div>
-																	<div id="SODV2203-3-0-0" className="panel-collapse collapse" aria-labelledby="collapseItem-3-0-0">
-																		<div className="panel-body">
-
-																			<p>Building on programming skills obtained in previous courses, the learner will learn techniques and gain experience developing with tools used for game and simulation programming. The learner will develop two-dimensional and three-dimensional graphics environments to be used for presenting data and creating virtual spaces. The use of game and simulation applications in various fields such as health, entertainment, environmental studies, and education will be explored.<br />Prerequisite: SODV2202</p>
-
-
-
-
-																		</div>
-																	</div>
-																</div>
-																<div className="panel panel-default">
-																	<div className="panel-heading" id="item-details-item-3-0-1">
-																		<h5 className="panel-title">
-																			<a role="button" data-toggle="collapse" data-parent="#accordion-item-3-0" href="#SODV2401-3-0-1" aria-expanded="false" aria-controls="item-details-item-3-0-1">
-																				SODV2401 - <span className="accordion-item-title">Algorithms and Data Structures</span>
-																				<span className="credits">Credits&nbsp;<strong>3</strong></span>
-																			</a>
-																		</h5>
-																	</div>
-																	<div id="SODV2401-3-0-1" className="panel-collapse collapse" aria-labelledby="collapseItem-3-0-1">
-																		<div className="panel-body">
-
-																			<p>This course introduces learners to fundamental abstract data types and common techniques, algorithms, and data structures used in their implementation. Learners also explore common search and sort algorithms as well as basic algorithm efficiency analysis. Learners are also exposed to common technical interview questions and strategies to solve them. <br />Prerequisites: SODV1202</p>
-
-
-
-
-																		</div>
-																	</div>
-																</div>
-																<div className="panel panel-default">
-																	<div className="panel-heading" id="item-details-item-3-0-2">
-																		<h5 className="panel-title">
-																			<a role="button" data-toggle="collapse" data-parent="#accordion-item-3-0" href="#SODV2999-3-0-2" aria-expanded="false" aria-controls="item-details-item-3-0-2">
-																				SODV2999 - <span className="accordion-item-title">Software Development Diploma Capstone Project</span>
-																				<span className="credits">Credits&nbsp;<strong>3</strong></span>
-																			</a>
-																		</h5>
-																	</div>
-																	<div id="SODV2999-3-0-2" className="panel-collapse collapse" aria-labelledby="collapseItem-3-0-2">
-																		<div className="panel-body">
-
-																			<p>Learners strengthen their skills and their knowledge of software development by creating a portfolio piece to prepare for entry into the industry. Research, client communication, and documentation skills are practiced and refined. Advanced elements of software design and development are put into practice. This course will center on a capstone project that incorporates all program learning.<br />Prerequisites: DESN2301, MGMT1104, SODV2101 and SODV2201</p>
-
-
-
-
-																		</div>
-																	</div>
-																</div>
-																<div className="panel panel-default">
-																	<div className="panel-heading" id="item-details-item-3-0-3">
-																		<h5 className="panel-title">
-																			<a role="button" data-toggle="collapse" data-parent="#accordion-item-3-0" href="#SODV3203-3-0-3" aria-expanded="false" aria-controls="item-details-item-3-0-3">
-																				SODV3203 - <span className="accordion-item-title">Mobile Application Development</span>
-																				<span className="credits">Credits&nbsp;<strong>3</strong></span>
-																			</a>
-																		</h5>
-																	</div>
-																	<div id="SODV3203-3-0-3" className="panel-collapse collapse" aria-labelledby="collapseItem-3-0-3">
-																		<div className="panel-body">
-
-																			<p>Learners approach application development with a mobile-first and mobile-only lens, expanding avenues to reach users. The course focuses on common industry tools and mobile features of programming languages and frameworks that enable mobile business application construction.</p>
-
-
-
-
-																		</div>
-																	</div>
-																</div>
-																<div className="panel panel-default">
-																	<div className="panel-heading" id="item-details-item-3-0-4">
-																		<h5 className="panel-title">
-																			<a role="button" data-toggle="collapse" data-parent="#accordion-item-3-0" href="#TECH2102-3-0-4" aria-expanded="false" aria-controls="item-details-item-3-0-4">
-																				TECH2102 - <span className="accordion-item-title">Enterprise Computing</span>
-																				<span className="credits">Credits&nbsp;<strong>3</strong></span>
-																			</a>
-																		</h5>
-																	</div>
-																	<div id="TECH2102-3-0-4" className="panel-collapse collapse" aria-labelledby="collapseItem-3-0-4">
-																		<div className="panel-body">
-
-																			<p>Learners will learn about the protocols and applications that make possible the simultaneous and seamless interaction of millions of computers through the internet and enterprise networks. In order to design and implement enterprise className applications, the learner will undertake an in depth study of the concepts of enterprise computing. To understand the practical aspect of enterprise computing, the learner will build a working example of a dynamic, secure web enterprise application. Topics that will be covered include Service Oriented Architecture (SOA) and Service Component Architecture (SCA).<br />Prerequisite: TECH1201, SODV2201</p>
-
-
-
-
-																		</div>
-																	</div>
-																</div>
-
-
-															</div>
-														</div>
-													</div>
-												</div>
-												<h3 className="header-variant-3">Optional Employment Search Preparation</h3>
-												<div className="accordion">
-													<div className="row accordion-title">
-														<div className="col-xs-12">
-															<h4 className="header-variant-5">Optional Courses<span></span></h4>
-														</div>
-													</div>
-													<div className="row accordion-list">
-														<div className="col-xs-12">
-															<div className="panel-group accordion type-connected" id="accordion-item-4-0">
-																<div className="panel panel-default">
-																	<div className="panel-heading" id="item-details-item-4-0-0">
-																		<h5 className="panel-title">
-																			<a role="button" data-toggle="collapse" data-parent="#accordion-item-4-0" href="#SODV9996-4-0-0" aria-expanded="false" aria-controls="item-details-item-4-0-0">
-																				SODV9996 - <span className="accordion-item-title">Software Development Employment Search Preparation</span>
-																				<span className="credits">Credits&nbsp;<strong>0</strong></span>
-																			</a>
-																		</h5>
-																	</div>
-																	<div id="SODV9996-4-0-0" className="panel-collapse collapse" aria-labelledby="collapseItem-4-0-0">
-																		<div className="panel-body">
-
-																			<p>Course description under development.</p>
-
-
-
-
-																		</div>
-																	</div>
-																</div>
-
-															</div>
-														</div>
-													</div>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -614,28 +477,29 @@ const ProgramDetail = () => {
 							<ul>
 								<li>
 									<a className="justify-content-between d-flex" href="#">
-										<p>Trainer Name</p>
-										<span className="or">George Mathews</span>
-									</a>
-								</li>
-								<li>
-									<a className="justify-content-between d-flex" href="#">
 										<p>Course Fee </p>
-										<span>$230</span>
+										<span>{prgramItem.fee} </span>
 									</a>
 								</li>
 								<li>
 									<a className="justify-content-between d-flex" href="#">
-										<p>Available Seats </p>
-										<span>15</span>
+										<p>Starting Date </p>
+										<span>{prgramItem.dateStarting} </span>
 									</a>
 								</li>
 								<li>
 									<a className="justify-content-between d-flex" href="#">
-										<p>Schedule </p>
-										<span>2.00 pm to 4.00 pm</span>
+										<p>Ending Date </p>
+										<span>{prgramItem.dateEnding} </span>
 									</a>
 								</li>
+								<li>
+									<a className="justify-content-between d-flex" href="#">
+										<p>Duration </p>
+										<span>{prgramItem.duration} </span>
+									</a>
+								</li>
+
 							</ul>
 							<Link to="/SignUp" className="primary-btn text-uppercase">Enroll the course</Link>
 						</div>
