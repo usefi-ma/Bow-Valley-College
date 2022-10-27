@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import DataTable from 'react-data-table-component';
+import Topbar from '../layouts/admin-layout/Topbar'
+import Sidebar from '../layouts/admin-layout/Sidebar'
+import { Footer } from '../layouts/admin-layout/Footer'
 
 var studentInfo =
     [{ id: 410084, firstName: "Mahya", lastName: "Yousefi", username: "usefi.ma", email: "usefi.ma@gmail.com", program: "SoftwareDevelopment Diploma" },
@@ -22,6 +25,17 @@ const Students = () => {
 
     return (
         <>
+          <div id="wrapper">
+        <Sidebar />
+        {/* <!-- Content Wrapper --> */}
+        <div id="content-wrapper" className="d-flex flex-column">
+
+          {/* <!-- Main Content --> */}
+          <div id="content">
+
+            <Topbar />
+                 {/* <!-- Begin Page Content --> */}
+                 <div className="container-fluid">
             <h1 className="h3 mb-4 text-gray-800">Students</h1>
 
             <div className="card shadow mb-5">
@@ -38,7 +52,6 @@ const Students = () => {
                                 className="form-control  mx-3 col-md-4" placeholder="Enter program" />
                                   <button type="submit" className='btn btn-primary'>Search</button>
                         </div>
-                      
                     </form>
 
 
@@ -73,6 +86,18 @@ const Students = () => {
                     </div>
                 </div>
             </div >
+            
+            </div>
+            {/* <!-- /.container-fluid --> */}
+          </div>
+          {/* <!-- End of Main Content --> */}
+          <Footer />
+        </div>
+        {/* <!-- End of Content Wrapper --> */}
+      </div>
+      {/* <!-- End of Page Wrapper --> */}
+
+
         </>
     )
 }

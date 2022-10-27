@@ -4,7 +4,7 @@ import '../../assest/css/main.css'
 import logo from '../../assest/img/logo.png';
 import '../../assest/css/main.css'
 import { Nav } from '../../component/Nav';
-import { Route, Routes,Link } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import Home from '../../user-pages/Home';
 import Contact from '../../user-pages/Contact'
 import Program from '../../user-pages/Program'
@@ -17,12 +17,12 @@ import PageNotFound from '../../component/Page-not-found/PageNotFound';
 const UserLayout = () => {
     return (
         <>
-        <header id="header">
+            <header id="header">
                 <div className="header-top">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
-                                <ul className='mb-1'> 
+                                <ul className='mb-1'>
                                     <li><a href="#"><i className="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i className="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i className="fa fa-dribbble"></i></a></li>
@@ -39,20 +39,85 @@ const UserLayout = () => {
                 <div className="container main-menu">
                     <div className="row align-items-center justify-content-between d-flex">
                         <div id="logo">
-                            <Link to="/"><img src={logo} alt="" title="" /></Link>
+                            <Link to="/home"><img src={logo} alt="" title="" /></Link>
                         </div>
                         <Nav />
                     </div>
                 </div>
             </header>
-
-            <Routes>
+            {/* <Routes>
                 <Route path="/" element={<Home />} exact />
-                <Route path="/Program" element={<Program />} exact/>
+                <Route path="/Program" element={<Program />} exact />
                 <Route path="/Contact" element={<Contact />} exact />
                 <Route path="/ProgramDetail" element={<ProgramDetail />} />
-                <Route path="*" element={<PageNotFound /> } />
-            </Routes>
+                <Route path="*" element={<PageNotFound />} />
+            </Routes> */}
+      {/* <!-- start banner Area --> */}
+      <section className="banner-area relative" id="home">
+                <div className="overlay overlay-bg"></div>
+                <div className="container">
+                    <div className="row fullscreen d-flex align-items-center justify-content-between" style={{ height: 714 }}>
+                        <div className="banner-content col-lg-9 col-md-12">
+                            <h1 className="text-uppercase">
+                                We Ensure better education
+                                for a better world
+                            </h1>
+                            <p className="pt-10 pb-10">
+                                In the history of modern astronomy, there is probably no one greater leap forward than
+                                the building and launch of the space telescope known as the Hubble.
+                            </p>
+                            <Link to="/signup" className="primary-btn text-uppercase">Apply Now</Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/* <!-- End banner Area --> */}
+
+            {/* <!-- Start feature Area --> */}
+            <section className="feature-area">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-4">
+                            <div className="single-feature">
+                                <div className="title">
+                                    <h4>Learn Online Courses</h4>
+                                </div>
+                                <div className="desc-wrap">
+                                    <p>
+                                        Usage of the Internet is becoming more common due to rapid advancement
+                                        of technology.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4">
+                            <div className="single-feature">
+                                <div className="title">
+                                    <h4>No.1 of universities</h4>
+                                </div>
+                                <div className="desc-wrap">
+                                    <p>
+                                        For many of us, our very first experience of learning about the celestial bodies begins when we saw our first.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4">
+                            <div className="single-feature">
+                                <div className="title">
+                                    <h4>Huge Library</h4>
+                                </div>
+                                <div className="desc-wrap">
+                                    <p>
+                                        If you are a serious astronomy fanatic like a lot of us are, you can probably remember that one event.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/* <!-- End feature Area --> */}
 
             <footer className="footer-area section-gap">
                 <div className="container">

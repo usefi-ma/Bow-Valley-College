@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import '../../assest/admin/css/sb-admin-2.css'
 import { Link, useNavigate } from "react-router-dom"
+import App from '../../App';
+
 
 const Login = () => {
-    const [users, setUsers] = useState([{ username: "Mahya", password: "1234", role: "Admin" }, { username: "Kale", password: "1234", role: "User" }]);
+    const [users, setUsers] = useState([{ username: "Admin", password: "1234", role: "Admin" }, { username: "Kale", password: "1234", role: "User" }]);
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
@@ -20,24 +22,37 @@ const Login = () => {
             users.forEach(function (user) {
                 if (user.username === username && user.password === password && user.role === "User") {
                     checkUser++;
-                    navigate('/');
+                    navigate('/home');
 
                 } else if (user.username === username && user.password === password && user.role === "Admin") {
                     checkUser++;
-                    navigate('/Admin');
-                } 
+                    const user = {
+                        userId: 'uuid',
+                        userName: 'Admin',
+                        role:'admin',
+                        fullName: 'Admin',
+                        token: 'a;dnadnasdk abkjdasdmasdmas;dasdmas;dasldmsa;ld'
+                    };
+
+                    //localStorage.setItem('key', 'value');
+                    localStorage.setItem('user', JSON.stringify(user));
+
+                    //redirect to dashboard page
+                 navigate('/');
+                }
             });
-          
+
             if (checkUser === 0) {
                 alert("Your username and password is wrong");
             }
-            
+
         }
 
 
     }
     return (
         <>
+        
             <div className="container pt-5">
                 <div className="row justify-content-center">
                     <div className="col-xl-10 col-lg-12 col-md-9">
@@ -50,7 +65,7 @@ const Login = () => {
                                             <div className="text-center">
                                                 <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                             </div>
-                                         
+
                                             <form className="user" onSubmit={handleSubmit}>
                                                 <div className="form-group">
                                                     <input type="text" className="form-control form-control-user"
@@ -76,9 +91,9 @@ const Login = () => {
                                             </form>
                                             <hr />
 
-                                            <div className="text-center">
-
+                                            <div className="d-flex justify-content-between">
                                                 <Link className="small" to="/Signup">Create an Account!</Link>
+                                                <Link className="small" to="/home">Homepage</Link>
                                             </div>
                                         </div>
                                     </div>
