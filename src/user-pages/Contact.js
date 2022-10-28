@@ -8,9 +8,14 @@ const Contact = () => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
+    const contactInfo = { name, email, subject, message };
     e.preventDefault();
     console.log("Submitted")
+    console.log(contactInfo);
     setName('');
+    setEmail('');
+    setSubject('');
+    setMessage('');
   }
 
   return (
