@@ -12,13 +12,7 @@ import SubmitedForms from '../../dashboard/SubmitedForms';
 import PageNotFound from '../../component/Page-not-found/PageNotFound'
 
 const AdminLayout = () => {
-  React.useEffect(() => {
-    async function init() {
-        localStorage.clear();
-        localStorage.setItem("role", false);
-    }
-    init();
-}, [])
+
   return (
     <>
       {/* <!-- Page Wrapper --> */}
@@ -34,14 +28,14 @@ const AdminLayout = () => {
                  {/* <!-- Begin Page Content --> */}
                  <div className="container-fluid">
 
-            <Routes>
-                <Route path="/" element={<Dashboard />}  />
-                <Route path="Admin/AddCourse" element={<AddCourse />} exact/>
-                <Route path="Admin/Courses" element={<Courses />} exact />
-                <Route path="Admin/Students" element={<Students />} exact />
-                <Route path="Admin/SubmitedForms" element={<SubmitedForms />} exact />
+            {/* <Routes>
+                <Route path="/" exact element={<Dashboard />}  />
+                <Route path="/AddCourse" exact element={<AddCourse />} />
+                <Route path="/Courses"exact element={<Courses />}  />
+                <Route path="/Students" exact element={<Students />}  />
+                <Route path="/SubmitedForms"exact element={<SubmitedForms />}  />
                 <Route path="*" element={<PageNotFound />} />
-            </Routes>
+            </Routes> */}
 
             </div>
             {/* <!-- /.container-fluid --> */}

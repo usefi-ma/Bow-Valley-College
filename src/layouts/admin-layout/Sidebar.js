@@ -8,12 +8,12 @@ const Sidebar = () => {
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
           {/* <!-- Sidebar - Brand --> */}
-          <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <NavLink className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
             </div>
-            <div className="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-          </a>
+            <div className="sidebar-brand-text mx-3">Bow valley </div>
+          </NavLink>
           <hr className="sidebar-divider my-0" />
 
           <li className="nav-item">
@@ -29,30 +29,30 @@ const Sidebar = () => {
           </div>
 
           <li className="nav-item">
-            <NavLink className="nav-link" to="Admin/AddCourse">
+            <NavLink className="nav-link" to="/AddCourse">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Add Course</span></NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="Admin/Courses">
+            <NavLink className="nav-link" to="/Courses">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Courses</span></NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="Admin/Students">
+            <NavLink className="nav-link" to="/Students">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Students</span></NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="Admin/SubmitedForms">
+            <NavLink className="nav-link" to="/SubmitedForms">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Submitted Forms</span></NavLink>
           </li>
           <hr className="sidebar-divider d-none d-md-block" />
-
+{/* 
           <div className="text-center d-none d-md-inline">
             <button className="rounded-circle border-0" id="sidebarToggle"></button>
-          </div>
+          </div> */}
 
         </ul>
         {/* <!-- End of Sidebar --> */}
