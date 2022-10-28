@@ -47,6 +47,7 @@ const SubmitedCourse = () => {
                                     <th>Email</th>
                                     <th>Username</th>
                                     <th>Message</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
