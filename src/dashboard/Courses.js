@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import DataTable from 'react-data-table-component';
+import React, { useState  } from 'react'
+import Topbar from '../layouts/admin-layout/Topbar'
+import Sidebar from '../layouts/admin-layout/Sidebar'
+import { Footer } from '../layouts/admin-layout/Footer'
 
 const currentCourses = [
     {
@@ -36,6 +38,9 @@ const currentCourses = [
         duration: "2 Years",
 
     }]
+
+
+    
 const Courses = () => {
 
     const [courses, setCourses] = useState(currentCourses);
@@ -47,9 +52,25 @@ const Courses = () => {
         setCourses(result);
     }
 
+    const removeCourse = (code) => {
+        var result = courses.filter(item => item.code != code);
+        setCourses(result);
+
+    }
 
     return (
         <>
+         <div id="wrapper">
+        <Sidebar />
+        {/* <!-- Content Wrapper --> */}
+        <div id="content-wrapper" className="d-flex flex-column">
+
+          {/* <!-- Main Content --> */}
+          <div id="content">
+
+            <Topbar />
+                 {/* <!-- Begin Page Content --> */}
+                 <div className="container-fluid">
             <h1 className="h3 mb-4 text-gray-800">Courses</h1>
 
             <div className="card shadow mb-5">
@@ -64,7 +85,6 @@ const Courses = () => {
                                 className="form-control  mx-3 col-md-4" placeholder="Enter course code or course name" />
                             <button type="submit" className='btn btn-primary'>Search</button>
                         </div>
-
                     </form>
 
 
@@ -78,6 +98,7 @@ const Courses = () => {
                                     <th>Starting date</th>
                                     <th>Ending Date</th>
                                     <th>Fee</th>
+                                    <th></th>
 
                                 </tr>
                             </thead>
@@ -89,7 +110,7 @@ const Courses = () => {
                                         <td>{course.dateStarting}</td>
                                         <td>{course.dateEnding}</td>
                                         <td>{course.fee}</td>
-
+                                        <td><button type="button" onClick={(e) => removeCourse(course.code)}>Remove</button></td>
                                     </tr>
                                 )}
                             </tbody>
@@ -98,6 +119,17 @@ const Courses = () => {
                     </div>
                 </div>
             </div >
+            </div>
+            {/* <!-- /.container-fluid --> */}
+          </div>
+          {/* <!-- End of Main Content --> */}
+          <Footer />
+        </div>
+        {/* <!-- End of Content Wrapper --> */}
+      </div>
+      {/* <!-- End of Page Wrapper --> */}
+
+
         </>
     )
 }

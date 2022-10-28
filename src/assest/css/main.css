@@ -5019,3 +5019,6 @@ dl.toggle.time-line:before {
 
     height: 49.5px !important;
 }
+.cursor_pointer{
+    cursor: pointer !important;
+}

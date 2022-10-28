@@ -56,7 +56,7 @@ const AddCourse = () => {
     } else {
       setSubmitted(true);
       setError(false);
-      setName('');
+      setName("");
       setStartingDate("");
       setEndingDate("");
       setFee("");
