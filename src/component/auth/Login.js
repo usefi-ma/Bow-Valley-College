@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import '../../assest/admin/css/sb-admin-2.css'
 import { Link, useNavigate } from "react-router-dom"
-import App from '../../App';
+
 
 
 const Login = () => {
-    const [users, setUsers] = useState([{ username: "Admin", password: "1234", role: "Admin" }, { username: "Kale", password: "1234", role: "User" }]);
+    const [users, setUsers] = useState([{ username: "Admin", password: "1234", role: "Admin" }, { username: "User", password: "1234", role: "User" }]);
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
@@ -22,16 +22,7 @@ const Login = () => {
             users.forEach(function (user) {
                 if (user.username === username && user.password === password && user.role === "User") {
                     checkUser++;
-                    const student = {
-                        userId: 'uuid',
-                        userName: 'user',
-                        role:'user',
-                        fullName: 'User',
-                        token: 'a;dnmsavcbgfgdf;ld'
-                    };
-
-                    //localStorage.setItem('key', 'value');
-                    localStorage.setItem('user', JSON.stringify(student));
+          
                     navigate('/home');
 
                 } else if (user.username === username && user.password === password && user.role === "Admin") {

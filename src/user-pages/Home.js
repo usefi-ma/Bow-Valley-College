@@ -1,13 +1,10 @@
 import React from 'react'
-import e1 from '../assest/img/e1.jpg';
-import e2 from '../assest/img/e2.jpg';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     return (
         <>
-        
-            {/* <!-- start banner Area --> */}
+
             <section className="banner-area relative" id="home">
                 <div className="overlay overlay-bg"></div>
                 <div className="container">
@@ -72,7 +69,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            {/* <!-- End feature Area --> */}
 
         </>
     )

@@ -17,10 +17,6 @@ const Programinfo = ({ programInfo }) => {
                     </div>
                 </div>
                 <div className="details">
-             
-                    {/* <p onClick={() => goProgramDetail(programInfo.code)}>
-                        <h4>{programInfo.name}</h4>
-                    </p> */}
                     <Link to={`/ProgramDetail?code=${programInfo.code}`}>
                         <h4>{programInfo.name}</h4>
                     </Link>

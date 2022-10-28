@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import UserHeader from '../layouts/user-layout/UserHeader';
+import UserFooter from '../layouts/user-layout/UserFooter';
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -20,6 +22,7 @@ const Contact = () => {
 
   return (
     <>
+     <UserHeader />
       <section className="banner-area relative about-banner" id="home">
         <div className="overlay overlay-bg"></div>
         <div className="container">
@@ -27,7 +30,7 @@ const Contact = () => {
             <div className="about-content col-lg-12">
               <h1 className="text-white">Contact Us</h1>
               <p className="text-white link-nav">
-                <Link to="/">Home </Link>
+                <Link to="/home">Home </Link>
                 <span className="lnr lnr-arrow-right"></span>
                 <Link to="/Contact"> Contact Us</Link>
               </p>
@@ -119,6 +122,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      <UserFooter />
     </>
   );
 };
