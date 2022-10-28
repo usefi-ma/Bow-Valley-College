@@ -12,6 +12,7 @@ export const Nav = () => {
           <li><NavLink to="/home">Home</NavLink></li>
           <li><NavLink to="/Program" >Programs</NavLink></li>
           <li><NavLink to="/Contact" >Contact</NavLink></li>
+          <li><NavLink to="/RegisterCourse" >RegisterCourse</NavLink></li>
           <li><NavLink to="/Signup" >Signup</NavLink></li>
           <li><NavLink to="/Login">Login</NavLink></li>
           {/* <li><NavLink to="/AdminLogin">Admin Login</NavLink></li> */}

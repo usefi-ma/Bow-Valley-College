@@ -5015,10 +5015,17 @@ dl.toggle.time-line:before {
     padding: 0 10px !important;
     cursor: pointer !important;
 }
+
 .contact-page-area .form-area input {
 
     height: 49.5px !important;
 }
-.cursor_pointer{
+
+.cursor_pointer {
     cursor: pointer !important;
+}
+
+.selected-row {
+    background-color: #f7631b !important;
+    color:white !important;
 }

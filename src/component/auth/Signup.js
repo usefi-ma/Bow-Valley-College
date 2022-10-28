@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../../assest/admin/css/sb-admin-2.css'
 import { Link } from 'react-router-dom'
 const Signup = () => {
- 
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ const Signup = () => {
         setLastName(e.target.value);
         setSubmitted(false);
     };
-  
+
     const handleEmail = (e) => {
         setEmail(e.target.value);
         setSubmitted(false);
@@ -38,8 +38,8 @@ const Signup = () => {
     const handleBirth = (e) => {
         setBirth(e.target.value);
         setSubmitted(false);
-    }; 
-     const handleDepartmant = (e) => {
+    };
+    const handleDepartmant = (e) => {
         setDepartmant(e.target.value);
         setSubmitted(false);
     };
@@ -56,34 +56,36 @@ const Signup = () => {
         setSubmitted(false);
     };
 
- 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (firstName === '' || email === '' || password === '') {
+        if (firstName === '' || email === '' || password === '' || email === '' || phone === '' || username === '' || program === '') {
             setError(true);
         } else {
             setSubmitted(true);
             setError(false);
+            console.log(` ${firstName}${lastName} ${email} ${password} ${email}${birth} ${phone}${departmant} ${program}${username}${password}`)
+
         }
     };
 
 
     const successMessage = () => {
         return (
-          
-                <div className="alert alert-success" role="alert" style={{ display: submitted ? '' : 'none', }}>
-                    {firstName}, You registered successfully!
-                </div>
-         
+
+            <div className="alert alert-success" role="alert" style={{ display: submitted ? '' : 'none', }}>
+                {firstName}, You registered successfully!
+            </div>
+
         );
     };
 
     const errorMessage = () => {
         return (
-         
-                <div className="alert alert-danger" role="alert" style={{display: error ? '' : 'none',}}>
-                    Please fill all the inputs
-                </div>
+
+            <div className="alert alert-danger" role="alert" style={{ display: error ? '' : 'none', }}>
+                Please fill all the inputs
+            </div>
         );
     };
     return (
@@ -101,7 +103,7 @@ const Signup = () => {
                             <div className="col-lg-5 d-none d-lg-block bg-register-image"></div>
                             <div className="col-lg-7">
                                 <div className="p-5">
-                                    {/* Calling to the methods */}
+                                  
                                     <div className="messages">
                                         {errorMessage()}
                                         {successMessage()}
@@ -126,15 +128,15 @@ const Signup = () => {
                                         </div>
                                         <div className="form-group">
                                             <input type="text" className="form-control form-control-user" onChange={handleBirth}
-                                               value={birth}  placeholder="Date of Birth" />
+                                                value={birth} placeholder="Date of Birth" />
                                         </div>
                                         <div className="form-group">
                                             <input type="text" className="form-control form-control-user" onChange={handlePhone}
-                                               value={phone}  placeholder="Phone" />
+                                                value={phone} placeholder="Phone" />
                                         </div>
                                         <div className="form-group row">
-                                        <div className="col-sm-6">
-                                            <select class="form-select form-control user_drp" value={departmant} onChange={handleDepartmant} aria-label="Default select example">
+                                            <div className="col-sm-6">
+                                                <select class="form-select form-control user_drp" value={departmant} onChange={handleDepartmant} aria-label="Default select example">
                                                     <option selected>Departmant</option>
                                                     <option value="1">IT</option>
                                                     <option value="2">Culture</option>
@@ -142,7 +144,7 @@ const Signup = () => {
                                                 </select>
                                             </div>
                                             <div className="col-sm-6">
-                                            <select class="form-select form-control user_drp" value={program} onChange={handleProgram} aria-label="Default select example">
+                                                <select class="form-select form-control user_drp" value={program} onChange={handleProgram} aria-label="Default select example">
                                                     <option selected>Program</option>
                                                     <option value="1">Software Development Diploma</option>
                                                     <option value="2">Software Development Post-Diploma Certificate</option>
@@ -152,14 +154,14 @@ const Signup = () => {
                                         </div>
                                         <div className="form-group">
                                             <input type="text" className="form-control form-control-user"
-                                               value={username} onChange={handleUsername}  placeholder="Username" />
+                                                value={username} onChange={handleUsername} placeholder="Username" />
                                         </div>
                                         <div className="form-group row">
                                             <div className="col-sm-12 mb-3 mb-sm-0">
                                                 <input type="password" className="form-control form-control-user"
-                                                  value={password} onChange={handlePassword} placeholder="Password" />
+                                                    value={password} onChange={handlePassword} placeholder="Password" />
                                             </div>
-                                        </div> 
+                                        </div>
                                         <button onClick={handleSubmit} className="btn btn-primary btn-user btn-block" type="submit">
                                             Register Account
                                         </button>

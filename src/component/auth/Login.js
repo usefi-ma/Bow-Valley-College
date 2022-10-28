@@ -22,6 +22,16 @@ const Login = () => {
             users.forEach(function (user) {
                 if (user.username === username && user.password === password && user.role === "User") {
                     checkUser++;
+                    const student = {
+                        userId: 'uuid',
+                        userName: 'user',
+                        role:'user',
+                        fullName: 'User',
+                        token: 'a;dnmsavcbgfgdf;ld'
+                    };
+
+                    //localStorage.setItem('key', 'value');
+                    localStorage.setItem('user', JSON.stringify(student));
                     navigate('/home');
 
                 } else if (user.username === username && user.password === password && user.role === "Admin") {
@@ -31,7 +41,7 @@ const Login = () => {
                         userName: 'Admin',
                         role:'admin',
                         fullName: 'Admin',
-                        token: 'a;dnadnasdk abkjdasdmasdmas;dasdmas;dasldmsa;ld'
+                        token: 'a;dnadnasdkasdmas;dasldmsa;ld'
                     };
 
                     //localStorage.setItem('key', 'value');

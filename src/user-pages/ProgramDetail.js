@@ -18,7 +18,7 @@ const currentPrograms = [
 		description: "Our Information Technology Systems (ITS) Diploma will give you the hardware and software skills required for the generation, storage, retrieval, transmission, and protection of digital information",
 		type: "Diploma",
 		duration: "2 Years",
-		courses: "<h5>Term1</h5><ul><li>COvid2 - Web</li></ul><br><h5>Term2</h5><ul><li>COvid2 - Web</li></ul><br>",
+		courses: "<h5>Term 1</h5><ul><li>Project management1 - Pr111</li><li>C++ Programming Fundamentals - C++111</li><li>CompM1111 - Computer Maintenance</li><li>IS1111 - Information Security1</li></ul><br><h5>Term 2</h5><ul><li>Networking - Net222</li><li>Web technology - Web222</li><li>Project Managemen - Pro222</li></ul><br><h5>Term 3</h5><ul><li>Advanced Project management1- Pr333</li><li>Advanced C++ Programming Fundamentals - C++333</li><li>Advanced Computer Maintenance - CompM333</li><li>Advanced Information Security1 - IS333</li></ul><br><h5>Term 4</h5><ul><li>Advanced Networking - Net222</li><li>Advanced Web technology- Web222</li><li>Advanced Project Managemen - Pro222</li></ul>",
 	},
 	{
 		code: 2,
@@ -30,7 +30,7 @@ const currentPrograms = [
 		description: "Prepare for a career in computer programming, web application development, software testing, and quality control.",
 		type: "Certificate",
 		duration: "2 Terms",
-		courses: "Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term2-CVOD201-Web",
+		courses: "<h5>Term 1</h5><ul><li>Project management1 - Pr111</li><li>C++ Programming Fundamentals - C++111</li><li>CompM1111 - Computer Maintenance</li><li>IS1111 - Information Security1</li></ul><br><h5>Term 2</h5><ul><li>Networking - Net222</li><li>Web technology - Web222</li><li>Project Managemen - Pro222</li></ul><br>",
 	},
 	{
 		code: 3,
@@ -42,7 +42,7 @@ const currentPrograms = [
 		description: "Gain the skills you need to create the latest computer, mobile, and gaming applications. Prepare to transform your ideas into reality all while developing your problem-solving skills.",
 		type: "Diploma",
 		duration: "2 Years",
-		courses: "Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term2-CVOD201-Web",
+		courses: "<h5>Term 1</h5><ul><li>Project management1 - Pr111</li><li>C++ Programming Fundamentals - C++111</li><li>CompM1111 - Computer Maintenance</li><li>IS1111 - Information Security1</li></ul><br><h5>Term 2</h5><ul><li>Networking - Net222</li><li>Web technology - Web222</li><li>Project Managemen - Pro222</li></ul><br><h5>Term 3</h5><ul><li>Advanced Project management1- Pr333</li><li>Advanced C++ Programming Fundamentals - C++333</li><li>Advanced Computer Maintenance - CompM333</li><li>Advanced Information Security1 - IS333</li></ul><br><h5>Term 4</h5><ul><li>Advanced Networking - Net222</li><li>Advanced Web technology- Web222</li><li>Advanced Project Managemen - Pro222</li></ul>",
 	}]
 var result = '';
 const ProgramDetail = () => {
@@ -167,7 +167,7 @@ const ProgramDetail = () => {
 								</li>
 
 							</ul>
-							<Link to="/SignUp" className="primary-btn text-uppercase">Enroll the course</Link>
+							<Link to="/RegisterCourse" className="primary-btn text-uppercase">Enroll the course</Link>
 						</div>
 					</div>
 				</div>

@@ -15,6 +15,7 @@ import PageNotFound from './component/Page-not-found/PageNotFound';
 import Contact from './user-pages/Contact'
 import Program from './user-pages/Program'
 import ProgramDetail from './user-pages/ProgramDetail'
+import RegisterCourse from './user-pages/RegisterCourse'
 
 const App = () => {
 
@@ -52,7 +53,7 @@ const App = () => {
                     <Route path="/Program" element={<Program />} exact />
                     <Route path="/Contact" element={<Contact />} exact />
                     <Route path="/ProgramDetail" element={<ProgramDetail />} />
-
+                    <Route path="/RegisterCourse" element={<RegisterCourse />} />
 
 
 
