@@ -1,0 +1,131 @@
+{
+  "student": [
+    {
+      "StudentID": 1,
+      "Firstname": "Mahya",
+      "Lastname": "Yousefi",
+      "Email": "usefi.ma@mail.com",
+      "BirthDate": "17/05/1993",
+      "Phone": "5879686613",
+      "Username": "",
+      "Password": "1234",
+      "DepartmentID": 1,
+      "ProgramID": 1
+    },
+    {
+      "StudentID": "",
+      "Firstname": "Mahya",
+      "Lastname": "Yousefi",
+      "Email": "usefi.ma@gmail.com",
+      "Phone": "5879686613",
+      "BirthDate": "12/5/1993",
+      "Username": "mkmk",
+      "Password": "1234",
+      "DepartmantID": "1",
+      "ProgramID": "1"
+    },
+    {
+      "StudentID": "712a67e0-3b0c-cd5e-2466-be09f1572c41",
+      "Firstname": "Mahya",
+      "Lastname": "Yousefi",
+      "Email": "usefi.ma@gmail.com",
+      "Phone": "5879686613",
+      "BirthDate": "12-45-2022",
+      "Username": "hjkdsh",
+      "Password": "jdxhj",
+      "DepartmantID": "2",
+      "ProgramID": "2"
+    },
+    {
+      "StudentID": "88ddfdf2",
+      "Firstname": "Mahya",
+      "Lastname": "Yousefi",
+      "Email": "usefi.ma@gmail.com",
+      "Phone": "5879686613",
+      "BirthDate": "11/25/2022",
+      "Username": "usefi.ma",
+      "Password": "123"
+    },
+    {
+      "StudentID": "41c88e65",
+      "Firstname": "Mahya",
+      "Lastname": "Usefi",
+      "Email": "usefi.ma@gmail.com",
+      "Phone": "5879686613",
+      "BirthDate": "11/25/2022",
+      "Username": "usefi.ma",
+      "Password": "sdf"
+    }
+  ],
+  "Course": [
+    {
+      "CourseID": 1,
+      "Name": "C++",
+      "StartDate": "11/23/2022",
+      "EndDate": "11/23/2022",
+      "Fees": 1100,
+      "Description": "This is a description",
+      "programID": 1,
+      "TermID": 1
+    }
+  ],
+  "Term": [
+    {
+      "TermID": 1,
+      "Name": "Term 1"
+    },
+    {
+      "TermID": 2,
+      "Name": "Term 2"
+    },
+    {
+      "TermID": 3,
+      "Name": "Term 3"
+    },
+    {
+      "TermID": 4,
+      "Name": "Term 4"
+    }
+  ],
+  "Program": [
+    {
+      "ProgramID": 1,
+      "Name": "Software Development",
+      "DepartmentID": 1,
+      "DegreeID": 1
+    }
+  ],
+  "Department": [
+    {
+      "DepartmentID": 1,
+      "Name": "IT"
+    }
+  ],
+  "Degree": [
+    {
+      "DegreeID": 1,
+      "Name": "Diploma",
+      "YearCount": 2
+    }
+  ],
+  "Form": [
+    {
+      "FormID": 1,
+      "Title": "Diploma",
+      "Description": "This is a description",
+      "StudentID": 1
+    }
+  ],
+  "RegisterCourse": [
+    {
+      "StudentID": 1,
+      "CourseID": 1
+    }
+  ],
+  "RegisterProgram": [
+    {
+      "StudentID": 1,
+      "ProgramID": 1
+    }
+  ]
+}
