@@ -6,10 +6,10 @@ const CourseList = ({ data, SelectedMode }) => {
             <tr className={data.selMode ? 'selected-row' : ''} >
                 <td>
                     <p className="btn btn-warning btn-sm ml-2"
-                        onClick={() => SelectedMode(data.code)}>Select</p>
+                        onClick={() => SelectedMode(data.CourseID)}>Select</p>
                 </td>
-                <td>{data.code}</td>
-                <td>{data.name}</td>
+                <td>{data.CourseID}</td>
+                <td>{data.Name}</td>
             </tr>
         </>
     )

@@ -2,27 +2,41 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';
+import Axios from "axios";
+import uuid from 'react-uuid';
 
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const unique_id = uuid();
+  const small_Form_id = unique_id.slice(0, 8);
 
-  const handleSubmit = (e) => {
-    const contactInfo = { name, email, subject, message };
-    e.preventDefault();
-    console.log("Submitted")
-    console.log(contactInfo);
-    setName('');
-    setEmail('');
-    setSubject('');
-    setMessage('');
-  }
+  const [createFrom, setCreateForm] = useState({
+    formId: small_Form_id,
+    firstName: "",
+    lastName: "",
+    email: "",
+    title: "",
+    message: ""
+  });
+
+  const [msg, setMsg] = useState("")
+  const handleChange = (event) => {
+    setCreateForm({ ...createFrom, [event.target.name]: event.target.value });  //any input element name and its value
+  };
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(createFrom);
+    Axios.post('http://localhost:5000/Form', createFrom)
+      .then(response => {
+        setMsg(response)
+        console.log(response)
+      });
+  };
 
   return (
     <>
-     <UserHeader />
+      <UserHeader />
       <section className="banner-area relative about-banner" id="home">
         <div className="overlay overlay-bg"></div>
         <div className="container">
@@ -76,31 +90,46 @@ const Contact = () => {
               <form className="form-area contact-form text-right" onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-lg-6 form-group">
+                  <input
+                      type="hidden"
+                      name="formId"
+                      value={createFrom.formId}
+                      onChange={handleChange}
+                       />
                     <input
-                      placeholder="Enter your name"
+                      placeholder="First Name"
                       className="common-input mb-20 form-control"
                       type="text"
                       required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
+                      name="firstName"
+                      value={createFrom.firstName}
+                      onChange={handleChange} />
 
+                    <input className="common-input mb-20 form-control"
+                      type="text"
+                      placeholder="Last Name"
+                      name="lastName"
+                      value={createFrom.lastName}
+                      onChange={handleChange}
+                    />
                     <input
                       placeholder="Enter email address"
                       className="common-input mb-20 form-control"
                       type="text"
                       required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      name="email"
+                      value={createFrom.email}
+                      onChange={handleChange}
                     />
 
                     <input
-                      placeholder="Enter subject"
+                      placeholder="Enter title"
                       className="common-input mb-20 form-control"
                       type="text"
                       required
-                      value={subject}
-                      onChange={(e) => setSubject(e.target.value)}
+                      name="title"
+                      value={createFrom.title}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="col-lg-6 form-group">
@@ -109,8 +138,9 @@ const Contact = () => {
                       placeholder="Enter Messege"
                       type="text"
                       required
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
+                      name="message"
+                      value={createFrom.message}
+                      onChange={handleChange}
                     ></textarea>
                   </div>
                   <div className="col-lg-12">

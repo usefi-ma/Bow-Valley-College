@@ -4787,7 +4787,7 @@ dl.toggle.time-line:before {
 }
 
 .contact-page-area .form-area textarea {
-    height: 190px;
+    height: 258px;
     margin-top: 0px;
     padding: 15px;
 }
@@ -5028,4 +5028,7 @@ dl.toggle.time-line:before {
 .selected-row {
     background-color: #f7631b !important;
     color:white !important;
+}
+.logout_link{
+    color: #fff !important;
 }

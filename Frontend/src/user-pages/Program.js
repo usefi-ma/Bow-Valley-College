@@ -3,51 +3,79 @@ import { Link } from 'react-router-dom'
 import Programinfo from './Programinfo';
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';
+import Axios from 'axios';
 
-const currentProgram = [
-	{
-		code: 1,
-		name: "Information Technology Systems Diploma",
-		image: "/p1.jpg",
-		dateStarting: "SEPTEMBER 05, 2023",
-		dateEnding: "May 05, 2025",
-		fee: "CAD $42,407",
-		description: "Our Information Technology Systems (ITS) Diploma will give you the hardware and software skills required for the generation, storage, retrieval, transmission, and protection of digital information",
-		type: "Diploma",
-		duration: "2 Years",
-		courses:"Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term2-CVOD201-Web",
-	},
-	{
-		code: 2,
-		name: "Software Development Post-Diploma Certificate",
-		image: "/p2.jpg",
-		dateStarting: "SEPTEMBER 05, 2023",
-		dateEnding: "May 05, 2024",
-		fee: "CAD $20,458",
-		description: "Prepare for a career in computer programming, web application development, software testing, and quality control.",
-		type: "Certificate",
-		duration: "2 Terms",
-		courses:"Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term2-CVOD201-Web",
-	},
-	{
-		code: 3,
-		name: "Software Development Diploma",
-		image: "/p3.jpg",
-		dateStarting: "SEPTEMBER 05, 2023",
-		dateEnding: "May 05, 2025",
-		fee: "CAD $42,407",
-		description: "Gain the skills you need to create the latest computer, mobile, and gaming applications. Prepare to transform your ideas into reality all while developing your problem-solving skills.",
-		type: "Diploma",
-		duration: "2 Years",
-		courses:"Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term2-CVOD201-Web",
-	}]
+// const currentProgram = [
+// 	{
+// 		code: 1,
+// 		name: "Information Technology Systems Diploma",
+// 		image: "/p1.jpg",
+// 		dateStarting: "SEPTEMBER 05, 2023",
+// 		dateEnding: "May 05, 2025",
+// 		fee: "CAD $42,407",
+// 		description: "Our Information Technology Systems (ITS) Diploma will give you the hardware and software skills required for the generation, storage, retrieval, transmission, and protection of digital information",
+// 		type: "Diploma",
+// 		duration: "2 Years",
+// 		courses:"Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term2-CVOD201-Web",
+// 	},
+// 	{
+// 		code: 2,
+// 		name: "Software Development Post-Diploma Certificate",
+// 		image: "/p2.jpg",
+// 		dateStarting: "SEPTEMBER 05, 2023",
+// 		dateEnding: "May 05, 2024",
+// 		fee: "CAD $20,458",
+// 		description: "Prepare for a career in computer programming, web application development, software testing, and quality control.",
+// 		type: "Certificate",
+// 		duration: "2 Terms",
+// 		courses:"Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term2-CVOD201-Web",
+// 	},
+// 	{
+// 		code: 3,
+// 		name: "Software Development Diploma",
+// 		image: "/p3.jpg",
+// 		dateStarting: "SEPTEMBER 05, 2023",
+// 		dateEnding: "May 05, 2025",
+// 		fee: "CAD $42,407",
+// 		description: "Gain the skills you need to create the latest computer, mobile, and gaming applications. Prepare to transform your ideas into reality all while developing your problem-solving skills.",
+// 		type: "Diploma",
+// 		duration: "2 Years",
+// 		courses:"Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term1-CVOD201-Web:Term2-CVOD201-Web",
+// 	}]
 
 
 
 const Program = () => {
 
-	const [programs, setPrograms] = useState(currentProgram);
+	// const [programs, setPrograms] = useState(currentProgram);
 	const [search, setSearch] = useState('');
+
+	const [programs, setPrograms] = useState([]);
+
+
+    const fetchData = React.useCallback(() => {
+      Axios({
+        "method": "GET",
+        "url": "http://localhost:5000/Programs"       
+      })
+      .then((response) => {
+        console.log(response.data.Program)
+        var newData = response.data.Program;  
+        setPrograms(newData);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }, [])
+  
+    React.useEffect(() => {
+      fetchData()
+    }, [fetchData])
+
+
+
+
+
 
 	const handleSearch = (e) => {
 		e.preventDefault();
@@ -104,7 +132,7 @@ const Program = () => {
 					<div className="row">
 						{
 							//
-							programs.map(program => <Programinfo programInfo={program}   key={program.code} />)
+							programs.map(program => <Programinfo programInfo={program}   key={program.ProgramID} />)
 						}
 					</div>
 					<a href="#" className="primary-btn text-uppercase m-auto" >Load More Courses</a>

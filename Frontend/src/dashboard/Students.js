@@ -5,14 +5,6 @@ import { Footer } from '../layouts/admin-layout/Footer'
 import Axios from 'axios'
 
 
-// var studentInfo =
-//     [{ id: 410084, firstName: "Mahya", lastName: "Yousefi", username: "usefi.ma", email: "usefi.ma@gmail.com", program: "SoftwareDevelopment Diploma" },
-//     { id: 410056, firstName: "Kale", lastName: "White", username: "white.kale", email: "kale.w@gmail.com", program: "SoftwareDevelopment Diploma" },
-//     { id: 410048, firstName: "Mark", lastName: "Mendoza", username: "Mendoza.m", email: "Mendoza.m@gmail.com", program: "SoftwareDevelopment Diploma" },
-//     { id: 410089, firstName: "Sara", lastName: "Ashoori", username: "Ashoori.s", email: "Ashoori.s@gmail.com", program: "Software Development Post-Diploma Certificate" },
-//     { id: 410059, firstName: "Gabriella", lastName: "Sezar", username: "Gabriella.s", email: "Gabriella.s@gmail.com", program: "Information Technology Systems Diploma" },
-//     ];
-
 const Students = () => {
 
     const [students, setStudents] = useState([]);

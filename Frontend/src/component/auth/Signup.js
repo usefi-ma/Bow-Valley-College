@@ -5,10 +5,10 @@ import Axios from 'axios'
 import uuid from 'react-uuid';
 
 const Signup = () => {
- 
-        const unique_id = uuid();
-       const small_Student_id = unique_id.slice(0,8)
-     
+
+    const unique_id = uuid();
+    const small_Student_id = unique_id.slice(0, 8)
+
     const [createUser, setCreateUser] = useState({
         studentId: small_Student_id,
         firstname: "",
@@ -20,6 +20,7 @@ const Signup = () => {
         program: "",
         username: "",
         password: "",
+        role: "User"
     });
     const [msg, setMsg] = useState("")
     //you can use only one handlechange method for all input elements. 
@@ -38,33 +39,6 @@ const Signup = () => {
             });
     };
 
-
-
-
-    // const [firstname, setFirstname] = useState("");
-    // const [lastname, setLastname] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [phone, setPhone] = useState("");
-    // const [birth, setBirth] = useState("");
-    // const [departmant, setDepartmant] = useState("");
-    // const [program, setProgram] = useState("");
-    // const [username, setUsername] = useState("");
-    // const [password, setPassword] = useState("");
-
-    // const submitPost = () => {
-    //     const unique_id = uuid();
-    //     const user = {
-    //         studentId: unique_id, firstname: firstname, lastname: lastname, email: email, phone: phone,
-    //         birth: birth, departmantID: departmant, programID: program, username: username, password: password
-    //     }
-    //     Axios.post('http://localhost:3005/student', user)
-    //         .then((response) => {
-    //             console.log("you send a new post with user data")
-    //         })//.catch((error) => {
-    //     //     console.warn('There is error :(' + error);
-    //     // })
-    // }
-
     return (
         <>
             <div className="container pt-5">
@@ -80,11 +54,17 @@ const Signup = () => {
                                         <h1 className="h4 text-gray-900 mb-4">Create an Account!</h1>
                                     </div>
                                     <form onSubmit={handleSubmit}>
-                                      
-                                        <input 
-                                           type="hidden" 
+
+                                        <input
+                                            type="hidden"
                                             name="studentId"
                                             value={createUser.studentId}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            type="hidden"
+                                            name="role"
+                                            value={createUser.role}
                                             onChange={handleChange}
                                         />
                                         <div className="form-group row">

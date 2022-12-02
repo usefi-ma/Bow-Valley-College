@@ -9,19 +9,19 @@ const Programinfo = ({ programInfo }) => {
                 <div className="thumb-wrap relative">
                     <div className="thumb relative">
                         <div className="overlay overlay-bg"></div>
-                        <img className="img-fluid" src={programInfo.image} />
+                        <img className="img-fluid" src={programInfo.Image} />
                     </div>
                     <div className="meta d-flex justify-content-between">
-                        <p>{programInfo.type}</p>
-                        <h4>{programInfo.fee}</h4>
+                        <p>{programInfo.Type}</p>
+                        <h4>CAD {programInfo.Fees}</h4>
                     </div>
                 </div>
                 <div className="details">
-                    <Link to={`/ProgramDetail?code=${programInfo.code}`}>
-                        <h4>{programInfo.name}</h4>
+                    <Link to={`/ProgramDetail?code=${programInfo.ProgramID}`}>
+                        <h4>{programInfo.Name}</h4>
                     </Link>
                     <p>
-                        {programInfo.description}
+                        {programInfo.Description}
                     </p>
                 </div>
             </div>

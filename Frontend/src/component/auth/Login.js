@@ -1,16 +1,40 @@
 import React, { useState } from 'react'
 import '../../assest/admin/css/sb-admin-2.css'
 import { Link, useNavigate } from "react-router-dom"
-
+import Axios from 'axios'
 
 
 const Login = () => {
-    const [users, setUsers] = useState([{ username: "Admin", password: "1234", role: "Admin" }, { username: "User", password: "1234", role: "User" }]);
+    
+    const [users, setUsers] = useState([]);
+
+
+
+
+    // const [users, setUsers] = useState([{ username: "Admin", password: "1234", role: "Admin" }, { username: "User", password: "1234", role: "User" }]);
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
     var checkUser = 0;
 
+    const fetchData = React.useCallback(() => {
+        Axios({
+          "method": "GET",
+          "url": "http://localhost:5000/student"       
+        })
+        .then((response) => {
+          console.log(response.data.student)
+          var newData = response.data.student;  
+          setUsers(newData);
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      }, [])
+    
+      React.useEffect(() => {
+        fetchData()
+      }, [fetchData])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,23 +44,30 @@ const Login = () => {
         }
         else {
             users.forEach(function (user) {
-                if (user.username === username && user.password === password && user.role === "User") {
+                if (user.Username === username && user.Password === password && user.Role === "User") {
                     checkUser++;
-          
+                    // const user = {
+                    //     userId: 'uuid',
+                    //     userName: 'User',
+                    //     role:'user',
+                    //     fullName: 'User',
+                    //     token: 'a;dnadnasdkasdmas;dasldmsa;ld'
+                    // };
+                    localStorage.setItem('user', JSON.stringify(user));
                     navigate('/home');
 
-                } else if (user.username === username && user.password === password && user.role === "Admin") {
+                } else if (user.Username === username && user.Password === password && user.Role === "Admin") {
                     checkUser++;
-                    const user = {
-                        userId: 'uuid',
-                        userName: 'Admin',
-                        role:'admin',
-                        fullName: 'Admin',
-                        token: 'a;dnadnasdkasdmas;dasldmsa;ld'
-                    };
+                    // const admin = {
+                    //     userId: 'uuid',
+                    //     userName: 'Admin',
+                    //     role:'admin',
+                    //     fullName: 'Admin',
+                    //     token: 'a;dnadnasdkasdmas;dasldmsa;ld'
+                    // };
 
                     //localStorage.setItem('key', 'value');
-                    localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('admin', JSON.stringify(user));
 
                     //redirect to dashboard page
                  navigate('/');

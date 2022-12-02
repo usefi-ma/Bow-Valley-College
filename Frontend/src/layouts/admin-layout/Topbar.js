@@ -7,7 +7,7 @@ import { withRouter, useLocation } from "react-router-dom";
 const Topbar = () => {
 
     //get data from localStorage
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('admin'));
     const location = useLocation();
 
     const logout = () => {
@@ -30,7 +30,7 @@ const Topbar = () => {
                 <a className="navbar-brand" href="javascript:;">
 
                     <img width="50px" style={{ marginRight: '8px' }} src={user != null ? profile : null} />
-                    {user != null ? user.fullName : null}
+                    {user != null ? user.Username : null}
                     <span style={{ marginRight: 20 }}>({location.pathname})</span>
                 </a>
 

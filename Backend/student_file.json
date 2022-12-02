@@ -7,13 +7,14 @@
       "Email": "usefi.ma@mail.com",
       "BirthDate": "17/05/1993",
       "Phone": "5879686613",
-      "Username": "",
+      "Username": "admin",
       "Password": "1234",
-      "DepartmentID": 1,
-      "ProgramID": 1
+      "DepartmentID": "1",
+      "ProgramID": "1",
+      "Role": "Admin"
     },
     {
-      "StudentID": "",
+      "StudentID": "1323",
       "Firstname": "Mahya",
       "Lastname": "Yousefi",
       "Email": "usefi.ma@gmail.com",
@@ -22,51 +23,75 @@
       "Username": "mkmk",
       "Password": "1234",
       "DepartmantID": "1",
-      "ProgramID": "1"
+      "ProgramID": "1",
+      "Role": "User"
     },
     {
-      "StudentID": "712a67e0-3b0c-cd5e-2466-be09f1572c41",
-      "Firstname": "Mahya",
-      "Lastname": "Yousefi",
-      "Email": "usefi.ma@gmail.com",
-      "Phone": "5879686613",
-      "BirthDate": "12-45-2022",
-      "Username": "hjkdsh",
-      "Password": "jdxhj",
-      "DepartmantID": "2",
-      "ProgramID": "2"
-    },
-    {
-      "StudentID": "88ddfdf2",
+      "StudentID": "f497908b",
       "Firstname": "Mahya",
       "Lastname": "Yousefi",
       "Email": "usefi.ma@gmail.com",
       "Phone": "5879686613",
       "BirthDate": "11/25/2022",
-      "Username": "usefi.ma",
-      "Password": "123"
+      "Username": "mahya.yousefi",
+      "Password": "1234",
+      "DepartmantID": "1",
+      "ProgramID": "2",
+      "Role": "User"
     },
     {
-      "StudentID": "41c88e65",
-      "Firstname": "Mahya",
-      "Lastname": "Usefi",
-      "Email": "usefi.ma@gmail.com",
+      "StudentID": "8f1f4eb6",
+      "Firstname": "Mark",
+      "Lastname": "mendoza",
+      "Email": "Mark.Mendoza@gmail.com",
       "Phone": "5879686613",
-      "BirthDate": "11/25/2022",
-      "Username": "usefi.ma",
-      "Password": "sdf"
+      "BirthDate": "12/50/1998",
+      "Username": "mark.mendoza",
+      "Password": "1234",
+      "DepartmantID": "1",
+      "ProgramID": "3",
+      "Role": "User"
     }
   ],
   "Course": [
     {
-      "CourseID": 1,
+      "CourseID": "1",
       "Name": "C++",
       "StartDate": "11/23/2022",
       "EndDate": "11/23/2022",
       "Fees": 1100,
       "Description": "This is a description",
-      "programID": 1,
-      "TermID": 1
+      "ProgramID": 1,
+      "TermID": 1,
+      "DegreeID": 1,
+      "DepartmentID": 1,
+      "selMode": false
+    },
+    {
+      "CourseID": "a4576bd1",
+      "Name": "sql2",
+      "StartDate": "11/12/2023",
+      "EndDate": "11/12/2023",
+      "Fees": "231",
+      "Description": "sdv cfxv xdcvxv",
+      "ProgramID": "1",
+      "TermID": "3",
+      "DepartmentID": "1",
+      "DegreeID": "2",
+      "selMode": false
+    },
+    {
+      "CourseID": "0fd1b2e4",
+      "Name": "OOP",
+      "StartDate": "12/1/2022",
+      "EndDate": "12/2/2023",
+      "Fees": "213",
+      "Description": "This is a description for the OOP course",
+      "ProgramID": "1",
+      "TermID": "2",
+      "DepartmentID": "1",
+      "DegreeID": "2",
+      "selMode": false
     }
   ],
   "Term": [
@@ -89,10 +114,24 @@
   ],
   "Program": [
     {
-      "ProgramID": 1,
+      "ProgramID": "1",
       "Name": "Software Development",
-      "DepartmentID": 1,
-      "DegreeID": 1
+      "Image": "/p1.jpg",
+      "Description": "Our Information Technology Systems (ITS) Diploma will give you the hardware and software skills required for the generation, storage, retrieval, transmission, and protection of digital information",
+      "Fees": 1100,
+      "Type": "Diploma",
+      "DepartmentID": "1",
+      "DegreeID": "1"
+    },
+    {
+      "ProgramID": "2",
+      "Name": "Software Development certificate",
+      "Image": "/p2.jpg",
+      "Description": "Our Information Technology Systems (ITS) Diploma will give you the hardware and software skills required for the generation, storage, retrieval, transmission, and protection of digital information",
+      "Fees": 1100,
+      "Type": "Diploma",
+      "DepartmentID": "1",
+      "DegreeID": "1"
     }
   ],
   "Department": [
@@ -106,20 +145,51 @@
       "DegreeID": 1,
       "Name": "Diploma",
       "YearCount": 2
+    },
+    {
+      "DegreeID": 2,
+      "Name": "Post diploma",
+      "YearCount": 1
+    },
+    {
+      "DegreeID": 3,
+      "Name": "Certificate",
+      "YearCount": 1
+    },
+    {
+      "DegreeID": 4,
+      "Name": "Upgrade",
+      "YearCount": 1
     }
   ],
   "Form": [
     {
-      "FormID": 1,
-      "Title": "Diploma",
-      "Description": "This is a description",
-      "StudentID": 1
+      "FormID": "1c666449",
+      "FirstName": "Mahya",
+      "LastName": "Yousefi",
+      "Title": "jlsdjf",
+      "Email": "usefi.ma@gmail.com",
+      "Message": "ldfkgjfdlgjdlf"
+    },
+    {
+      "FormID": "39fc6146",
+      "FirstName": "Mark",
+      "LastName": "Mendoza",
+      "Title": "sample",
+      "Email": "Mark.Mondeza@gmail.com",
+      "Message": "This is a sample from Mark to admin"
     }
   ],
   "RegisterCourse": [
     {
-      "StudentID": 1,
-      "CourseID": 1
+      "StudentID": "1",
+      "CourseID": "1",
+      "TermID": "1"
+    },
+    {
+      "StudentID": "1323",
+      "CourseID": "3",
+      "TermID": "1"
     }
   ],
   "RegisterProgram": [
