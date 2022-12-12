@@ -69,6 +69,7 @@ const AddCourse = () => {
         setMsg(response)
         console.log(response)
       });
+      alert("The course added successfully");
   };
 
 

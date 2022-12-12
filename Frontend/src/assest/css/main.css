@@ -5032,3 +5032,4 @@ dl.toggle.time-line:before {
 .logout_link{
     color: #fff !important;
 }
+.new-line{ white-space: pre-line;}

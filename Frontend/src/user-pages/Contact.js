@@ -30,7 +30,8 @@ const Contact = () => {
     Axios.post('http://localhost:5000/Form', createFrom)
       .then(response => {
         setMsg(response)
-        console.log(response)
+        console.log(response);
+        alert("Your message sent successfully")
       });
   };
 

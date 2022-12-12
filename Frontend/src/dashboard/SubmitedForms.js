@@ -6,10 +6,8 @@ import { Footer } from '../layouts/admin-layout/Footer'
 import Axios from 'axios'
 const SubmitedCourse = () => {
 
-
-
     const [studentMessage, setStudentsMessage] = useState([]);
-    const [search, setSearch] = useState('');
+
 
 
     const fetchData = React.useCallback(() => {
@@ -31,6 +29,8 @@ const SubmitedCourse = () => {
       fetchData()
     }, [fetchData])
 
+
+
     return (
 
 
@@ -47,12 +47,6 @@ const SubmitedCourse = () => {
                                     <h6 className="m-0 font-weight-bold text-primary">Submited Forms</h6>
                                 </div>
                                 <div className="card-body">
-
-                                    <div id="dataTable_filter" className="dataTables_filter d-flex mb-2">
-                                        <label>Search:  </label>
-                                        <input type="search" className="form-control form-control-sm col-md-4 ml-3" placeholder="" aria-controls="dataTable" />
-
-                                    </div>
 
                                     <div className="table-responsive">
 

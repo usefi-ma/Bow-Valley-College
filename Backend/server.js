@@ -157,12 +157,13 @@ app.post('/registerCourse', (req, res) => {
         }
         res.send(reply);
     } else {
-        obj.RegisterCourse.push({
-            StudentID: req.body.studentId,
-            CourseID: req.body.courseId,
-            TermID: req.body.termId,
-
-        });
+        for (let i = 0; i < CourseID.length; i++) {
+            obj.RegisterCourse.push({
+                StudentID: req.body.studentId,
+                CourseID: req.body.courseId[i],
+                TermID: req.body.termId,
+            });
+        }
         let data = JSON.stringify(obj, null, 2);
         fs.writeFile('student_file.json', data, confirm);
         // console.log('new user added to dataset.json')
@@ -196,7 +197,7 @@ app.post('/Form', (req, res) => {
     const Email = req.body.email;
     const Message = req.body.message;
 
-    const rs = { FormID,FirstName, LastName, Title, Email, Message }
+    const rs = { FormID, FirstName, LastName, Title, Email, Message }
     console.log(FirstName + " " + LastName + " " + Title + "  data recieved from client");
     if (!rs.FirstName || !rs.LastName) {
         let reply = {
@@ -205,7 +206,7 @@ app.post('/Form', (req, res) => {
         res.send(reply);
     } else {
         obj.Form.push({
-            FormID : req.body.formId,
+            FormID: req.body.formId,
             FirstName: req.body.firstName,
             LastName: req.body.lastName,
             Title: req.body.title,
@@ -276,19 +277,19 @@ if (exists) {
 
 app.post('/Course', (req, res) => {
 
-  const CourseID= req.body.courseId;
-  const Name= req.body.name;
-  const StartDate= req.body.startDate;
-  const EndDate= req.body.endDate;
-  const Fees= req.body.fees;
-  const Description= req.body.description;
-  const ProgramID= req.body.programId;
-  const TermID= req.body.termId;
-  const DepartmentID= req.body.departmentId;
-  const DegreeID= req.body.degreeId;
-  const selMode= req.body.selMode;
+    const CourseID = req.body.courseId;
+    const Name = req.body.name;
+    const StartDate = req.body.startDate;
+    const EndDate = req.body.endDate;
+    const Fees = req.body.fees;
+    const Description = req.body.description;
+    const ProgramID = req.body.programId;
+    const TermID = req.body.termId;
+    const DepartmentID = req.body.departmentId;
+    const DegreeID = req.body.degreeId;
+    const selMode = req.body.selMode;
 
-    const rs = { CourseID,Name, StartDate, EndDate, Fees, Description,DepartmentID,DegreeID,ProgramID,TermID,selMode }
+    const rs = { CourseID, Name, StartDate, EndDate, Fees, Description, DepartmentID, DegreeID, ProgramID, TermID, selMode }
     console.log(CourseID + " " + Name + " " + StartDate + "  data recieved from client");
     if (!rs.CourseID || !rs.Name) {
         let reply = {
@@ -298,16 +299,16 @@ app.post('/Course', (req, res) => {
     } else {
         obj.Course.push({
             CourseID: req.body.courseId,
-            Name:req.body.name,
+            Name: req.body.name,
             StartDate: req.body.startDate,
             EndDate: req.body.endDate,
             Fees: req.body.fees,
             Description: req.body.description,
             ProgramID: req.body.programId,
-            TermID:req.body.termId,
+            TermID: req.body.termId,
             DepartmentID: req.body.departmentId,
-            DegreeID:req.body.degreeId,
-            selMode:req.body.selMode,
+            DegreeID: req.body.degreeId,
+            selMode: req.body.selMode,
         });
         let data = JSON.stringify(obj, null, 2);
         fs.writeFile('student_file.json', data, confirm);
@@ -322,3 +323,21 @@ app.post('/Course', (req, res) => {
         }
     }
 });
+///////////////////////////////////////////////delete course
+
+
+// var exists = fs.existsSync('student_file.json');
+// if (exists) {
+//     var data = fs.readFileSync('student_file.json', 'utf8');
+//     obj = JSON.parse(data);
+// } else {
+//     console.log('delete Term from dataset ')
+//     var obj = { Term: [] };
+// }
+
+// app.delete('/courses/:id', (req, res) => {
+//     var id = req.params.id;
+//     const course = obj.Term.id;
+//     delete obj.Term.id;
+//     return res.status(200);
+// });

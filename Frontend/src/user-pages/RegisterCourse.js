@@ -5,9 +5,10 @@ import UserFooter from '../layouts/user-layout/UserFooter';
 import { Link } from 'react-router-dom'
 import Axios from 'axios';
 
-
+let myCourses = [];
 var result = '';
 var years = [];
+var programName = [{}];
 const RegisterCourse = () => {
     const userLocalStorage = JSON.parse(localStorage.getItem('user'));
 
@@ -15,8 +16,8 @@ const RegisterCourse = () => {
     const [error, setError] = useState(false);
 
     const [term, setTerm] = useState('');
-    const [courses, setCourses] = useState([]);
-    const [selectedCourse, setSelectedCourse] = useState([]);
+    const [courses, setCourses] = useState([{}]);
+    const [selectedCourse, setSelectedCourse] = useState([{}]);
     const [sendableCourse, setSendableCourse] = useState([]);
     const fetchData = React.useCallback(() => {
         Axios({
@@ -39,23 +40,28 @@ const RegisterCourse = () => {
             .then((response) => {
 
                 let temp = response.data.Program;
+                programName = temp.filter(item => item.ProgramID == userLocalStorage.ProgramID)
+
 
                 for (let i = 0; i < temp.length; i++) {
                     if (response.data.Program[i].ProgramID === userLocalStorage.ProgramID) {
-                        // temp[i].DegreeID
+
                         switch (response.data.Program[i].DegreeID) {
                             case "1":
-                                years = [{ "TermID": 1, "Name": "Term 1" }, { "TermID": 2, "Name": "Term 2" }];
+                                years = [{ "TermID": 1, "Name": "Term 1" }, { "TermID": 2, "Name": "Term 2" }, { "TermID": 3, "Name": "Term 3" }, { "TermID": 4, "Name": "Term 4" }];
                                 break;
                             case "2":
-                                years = [{ "TermID": 1, "Name": "Term 1" }, { "TermID": 2, "Name": "Term 2" }, { "TermID": 3, "Name": "Term 3" }, { "TermID": 4, "Name": "Term 4" }];
-
+                                years = [{ "TermID": 1, "Name": "Term 1" }, { "TermID": 2, "Name": "Term 2" }];
+                                break;
+                            case "3":
+                                years = [{ "TermID": 1, "Name": "Term 1" }, { "TermID": 2, "Name": "Term 2" }];
                                 break;
                             default:
                                 break;
                         }
                     }
                 }
+
             })
             .catch((error) => {
                 console.log(error)
@@ -72,10 +78,9 @@ const RegisterCourse = () => {
         const temp = [...courses];
         const index = temp.findIndex(q => q.CourseID == id);
         temp[index].selMode = true;
-        setSelectedCourse(temp[index]);
-        setSendableCourse(temp[index].CourseID)
-      
-        setCourses([...temp]);
+        const result = temp.filter(q => q.CourseID == id);
+        myCourses.push(result);
+        setSelectedCourse({ ...result, result });
     }
 
     const handleTerm = (e) => {
@@ -83,7 +88,7 @@ const RegisterCourse = () => {
         setSubmitted(false);
     };
 
-    
+
     const successMessage = () => {
         return (
             <div className="alert alert-success" role="alert" style={{ display: submitted ? '' : 'none', }}>
@@ -101,7 +106,7 @@ const RegisterCourse = () => {
     };
     const [registerStCourse, setRegisterStCourse] = useState({
         studentId: userLocalStorage.StudentID,
-        courseId: "",
+        courseId: [],
         termId: "",
     });
     const [msg, setMsg] = useState("")
@@ -109,22 +114,26 @@ const RegisterCourse = () => {
         setRegisterStCourse({ ...registerStCourse, [event.target.name]: event.target.value });  //any input element name and its value
     };
 
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-      
-            console.log(`Registered courses for term:${registerStCourse.termId} `)
-           // const temp = courses.filter(q => q.selMode == true);
-       
-           registerStCourse.courseId=selectedCourse.CourseID;
-           console.log(registerStCourse)
-            Axios.post('http://localhost:5000/registerCourse', registerStCourse)
-            .then(response => {
-                setMsg(response)
-                console.log(response)
-            });
 
-           
+        console.log(`Registered courses for term:${registerStCourse.termId} `)
+        const temp = courses.filter(q => q.selMode == true);
+        let courseIDString = [];
+        for (let i = 0; i < myCourses.length; i++) {
+            courseIDString.push(myCourses[i][0].CourseID);
+            registerStCourse.courseId = courseIDString;
+        }
+        if (courseIDString.length <= 2 || courseIDString.length > 5) { alert("You can select between 2 and 5 courses"); }
+        else {
+            Axios.post('http://localhost:5000/registerCourse', registerStCourse)
+                .then(response => {
+                    setMsg(response)
+                    console.log(response)
+                });
+            alert("You registered successfully");
+        }
     };
 
 
@@ -150,9 +159,6 @@ const RegisterCourse = () => {
             </section>
 
             <div className="container pt-5">
-
-
-
                 <form className='mb-4'>
                     <div className="row">
                         <input
@@ -163,18 +169,17 @@ const RegisterCourse = () => {
                         />
                         <div className='col-md-12'>
                             <p><b>Username:</b>{userLocalStorage != null ? userLocalStorage.Username : null}</p>
-                            <p><b>Program:</b> {userLocalStorage != null ? userLocalStorage.ProgramID : null}</p>
+                            <p><b>Program:</b> {userLocalStorage != null ? programName[0].Name : null}</p>
 
                         </div>
                         <div className="col-sm-4 mb-4">
                             <select className="form-select form-control user_drp"
-                              aria-label="Default select example"
+                                aria-label="Default select example"
                                 onChange={handleChange}
                                 name="termId"
-                                value={registerStCourse.termId}
-                                >
+                                value={registerStCourse.termId}>
                                 <option selected>Terms</option>
-                                {years.map((option , index) => (
+                                {years.map((option, index) => (
                                     <option value={option.TermID} key={index}>{option.Name}</option>
                                 ))}
                             </select>
@@ -188,9 +193,9 @@ const RegisterCourse = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                { courses.map((course, i) =>
-                                        <CourseList SelectedMode={setSelectMode} data={course} key={i + 1} />
-                                    )}
+                                {courses.map((course, i) =>
+                                    <CourseList SelectedMode={setSelectMode} data={course} key={i + 1} />
+                                )}
                             </tbody>
                         </table>
                         <input
@@ -213,13 +218,4 @@ const RegisterCourse = () => {
         </>
     )
 }
-export default RegisterCourse   
- // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     console.log(createUser);
-    //     Axios.post('http://localhost:5000/student', createUser)
-    //         .then(response => {
-    //             setMsg(response)
-    //             console.log(response)
-    //         });
-    // };
+export default RegisterCourse

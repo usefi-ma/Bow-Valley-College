@@ -79,7 +79,7 @@ const Program = () => {
 
 	const handleSearch = (e) => {
 		e.preventDefault();
-        var result = programs.filter(item => item.code == search || item.name== search);
+        var result = programs.filter(item => item.Name == search || item.ProgramID== search);
         setPrograms(result);
 
 	}

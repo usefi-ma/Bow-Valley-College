@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 import Axios from 'axios'
 import uuid from 'react-uuid';
 
+
+
 const Signup = () => {
+
+    var result = [];
 
     const unique_id = uuid();
     const small_Student_id = unique_id.slice(0, 8)
@@ -22,6 +26,7 @@ const Signup = () => {
         password: "",
         role: "User"
     });
+
     const [msg, setMsg] = useState("")
     //you can use only one handlechange method for all input elements. 
     const handleChange = (event) => {
@@ -37,7 +42,32 @@ const Signup = () => {
                 setMsg(response)
                 console.log(response)
             });
+            alert("You registered successfully");
     };
+    const [options, setOptions] = useState([]);
+
+    React.useEffect(() => {
+        async function fetchData() {
+            // Fetch data
+            const { data } = await Axios.get("http://localhost:5000/Programs");
+            console.log(data.Program);
+            const results = []
+            // Store results in the results array
+            data.Program.forEach((value) => {
+                results.push({
+                    key: value.Name,
+                    value: value.ProgramID,
+                });
+            });
+            setOptions([
+                { key: 'Select a company', value: '' },
+                ...results
+            ])
+        }
+
+        // Trigger the fetch
+        fetchData();
+    }, []);
 
     return (
         <>
@@ -123,19 +153,21 @@ const Signup = () => {
                                                     value={createUser.departmant} >
                                                     <option selected>Departmant</option>
                                                     <option value="1">IT</option>
-                                                    <option value="2">Culture</option>
-                                                    <option value="3">MBA</option>
                                                 </select>
                                             </div>
                                             <div className="col-sm-6">
                                                 <select className="form-select form-control user_drp"
                                                     name="program"
                                                     onChange={handleChange}
-                                                    value={createUser.program}>
-                                                    <option selected>Program</option>
-                                                    <option value="1">Software Development Diploma</option>
-                                                    <option value="2">Software Development Post-Diploma Certificate</option>
-                                                    <option value="3">Information Technology Systems (ITS) Diploma</option>
+                                                    value={createUser.program}
+                                                >
+                                                    {options.map((option) => {
+                                                        return (
+                                                            <option key={option.value} value={option.value}>
+                                                                {option.key}
+                                                            </option>
+                                                        );
+                                                    })}
                                                 </select>
                                             </div>
                                         </div>
@@ -176,7 +208,7 @@ const Signup = () => {
                     </div>
                 </div>
 
-            </div>
+            </div >
 
         </>
     )

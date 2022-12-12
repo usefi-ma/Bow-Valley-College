@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Topbar from '../layouts/admin-layout/Topbar'
 import Sidebar from '../layouts/admin-layout/Sidebar'
 import { Footer } from '../layouts/admin-layout/Footer'
@@ -10,24 +10,22 @@ const Students = () => {
     const [students, setStudents] = useState([]);
     const [search, setSearch] = useState('');
 
-
     const fetchData = React.useCallback(() => {
-      Axios({
-        "method": "GET",
-        "url": "http://localhost:5000/student"       
-      })
-      .then((response) => {
-        console.log(response.data.student)
-        var newData = response.data.student;  
-        setStudents(newData);
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+        Axios({
+            "method": "GET",
+            "url": "http://localhost:5000/student"
+        }).then((response) => {
+                var newData = response.data.student;
+                setStudents(newData);
+
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }, [])
-  
+
     React.useEffect(() => {
-      fetchData()
+        fetchData()
     }, [fetchData])
 
 
@@ -38,7 +36,7 @@ const Students = () => {
         if (search === '') {
             setStudents([...students]);
         } else {
-            var result = students.filter(item => item.program == search);
+            var result = students.filter(item => item.ProgramID === search);
             setStudents(result);
         }
     }
@@ -88,21 +86,21 @@ const Students = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                           
+
                                                 {students.map((student, i) =>
                                                     <tr key={student.StudentID}>
                                                         <td>{i + 1}</td>
                                                         <td>{student.StudentID}</td>
                                                         <td>{student.Firstname}</td>
                                                         <td>{student.Lastname}</td>
-                                                         <td>{student.BirthDate}</td>
+                                                        <td>{student.BirthDate}</td>
                                                         <td>{student.ProgramID}</td>
                                                         <td>{student.DepartmentID}</td>
                                                         <td>{student.Email}</td>
-                                                         <td>{student.Phone}</td>
+                                                        <td>{student.Phone}</td>
                                                         <td>{student.Username}</td>
                                                         <td>{student.Password}</td>
-                                                          
+
                                                     </tr>
                                                 )}
                                             </tbody>

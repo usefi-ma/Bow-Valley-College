@@ -4,40 +4,6 @@ import Sidebar from '../layouts/admin-layout/Sidebar'
 import { Footer } from '../layouts/admin-layout/Footer'
 import Axios from 'axios'
 
-// const currentCourses = [
-//     {
-//         code: 1,
-//         name: "Information Technology Systems Diploma",
-//         image: "/p1.jpg",
-//         dateStarting: "SEPTEMBER 05, 2023",
-//         dateEnding: "May 05, 2025",
-//         fee: "CAD $42,407",
-//         description: "Our Information Technology Systems (ITS) Diploma will give you the hardware and software skills required for the generation, storage, retrieval, transmission, and protection of digital information",
-//         type: "Diploma"
-//     },
-//     {
-//         code: 2,
-//         name: "Software Development Post-Diploma Certificate",
-//         image: "/p2.jpg",
-//         dateStarting: "SEPTEMBER 05, 2023",
-//         dateEnding: "May 05, 2024",
-//         fee: "CAD $20,458",
-//         description: "Prepare for a career in computer programming, web application development, software testing, and quality control.",
-//         type: "Certificate"
-//     },
-//     {
-//         code: 3,
-//         name: "Software Development Diploma",
-//         image: "/p3.jpg",
-//         dateStarting: "SEPTEMBER 05, 2023",
-//         dateEnding: "May 05, 2025",
-//         fee: "CAD $42,407",
-//         description: "Gain the skills you need to create the latest computer, mobile, and gaming applications. Prepare to transform your ideas into reality all while developing your problem-solving skills.",
-//         type: "Diploma"
-
-//     }]
-
-
 
 const Courses = () => {
 
@@ -54,12 +20,7 @@ const Courses = () => {
         }
     }
 
-    const removeCourse = (code) => {
-        var result = courses.filter(item => item.code != code);
-        setCourses(result);
-
-    }
-    /////////////////
+  
 
   
     const fetchData = React.useCallback(() => {
@@ -82,7 +43,17 @@ const Courses = () => {
     }, [fetchData])
 
 
+    const removeCourse = (code) => {
+        var result = courses.filter(item => item.CourseID !== code);
+        setCourses(result);
+        alert("Deleted");
+    }
+    const handleSearch = (e) => {
+		e.preventDefault();
+        var result = courses.filter(item => item.Name == search || item.CourseID == search);
+        setCourses(result);
 
+	}
     return (
         <>
             <div id="wrapper">
@@ -98,7 +69,7 @@ const Courses = () => {
                                     <h6 className="m-0 font-weight-bold text-primary">Courses</h6>
                                 </div>
                                 <div className="card-body">
-                                    <form onSubmit={handleSubmit}>
+                                    <form onSubmit={handleSearch}>
                                         <div className="dataTables_filter d-flex mb-3 align-items-center">
                                             <label>Search:  </label>
                                             <input type="search" onChange={(e) => setSearch(e.target.value)} value={search}
@@ -130,7 +101,7 @@ const Courses = () => {
                                                         <td>{course.StartDate}</td>
                                                         <td>{course.EndDate}</td>
                                                         <td>{course.Fees}</td>
-                                                        <td><button type="button" className='btn btn-danger' onClick={(e) => removeCourse(course.code)}>Remove</button></td>
+                                                        <td><button type="button" className='btn btn-danger' onClick={(e) => removeCourse(course.CourseID)}>Remove</button></td>
                                                     </tr>
                                                 )}
                                             </tbody>
